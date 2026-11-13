@@ -1,0 +1,42 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+@layer base {
+  :root {
+    --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  html,
+  body {
+    scroll-behavior: smooth;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+  }
+}
+
+/* Custom subtle scrollbars & animations */
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+.animate-float-slow {
+  animation: floatSlow 4s ease-in-out infinite;
+}
+
+/* Range slider styling */
+input[type='range'].amber-slider {
+  accent-color: #f59e0b;
+}
+
+/* Leaflet dark/custom adjustments */
+.leaflet-container {
+  font-family: var(--font-sans);
+  z-index: 10;
+}
