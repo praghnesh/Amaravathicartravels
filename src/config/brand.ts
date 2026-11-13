@@ -21,16 +21,11 @@ export const BRAND = {
   logo: MEDIA.logo,
   heroBg: MEDIA.heroBg,
   headOffice: {
-    title: 'Amaravati & Mangalagiri Head Office',
-    address: 'Plot 14, NH-16 Service Road, Near NRI Medical College Junction, Mangalagiri - Amaravati, Andhra Pradesh 522503',
+    title: 'Vijayawada Head Office (Benz Circle)',
+    address: 'Benz Circle, MG Road, Vijayawada, Andhra Pradesh 520010',
     hours: 'Open 24 Hours / 7 Days a Week',
   },
   branchOffices: [
-    {
-      city: 'Vijayawada Hub',
-      area: 'Benz Circle & Pandit Nehru Bus Station, Vijayawada - 520010',
-      dispatchTime: '10-15 Min Pickup',
-    },
     {
       city: 'Guntur Hub',
       area: 'Lakshmipuram & Arundelpet Main Road, Guntur - 522002',
@@ -40,6 +35,11 @@ export const BRAND = {
       city: 'Amaravati Capital Hub',
       area: 'Seed Access Road, Thullur & Velagapudi Secretariat Zone - 522237',
       dispatchTime: '15 Min Pickup',
+    },
+    {
+      city: 'Mangalagiri & Airport Hub',
+      area: 'NH-16 Service Road, Mangalagiri & Gannavaram Airport (VGA) - 521102',
+      dispatchTime: '10-15 Min Pickup',
     },
   ],
   serviceCities: [
