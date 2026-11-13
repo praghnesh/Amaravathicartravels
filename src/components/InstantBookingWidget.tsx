@@ -273,7 +273,7 @@ export const InstantBookingWidget: React.FC = () => {
               required
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
-              placeholder="e.g. 98480xxxxx"
+              placeholder="e.g. 93935xxxxx"
               className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-amber-500 focus:bg-white outline-none text-xs sm:text-sm font-medium"
             />
           </div>

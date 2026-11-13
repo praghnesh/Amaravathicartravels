@@ -159,7 +159,7 @@ export const ContactPage: React.FC = () => {
                     required
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    placeholder="+91 98XXX XXXXX"
+                    placeholder="+91 93935 XXXXX"
                     className="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-amber-500"
                   />
                 </div>
