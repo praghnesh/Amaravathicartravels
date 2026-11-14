@@ -8,6 +8,9 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview"
   },
+  "allowScripts": {
+    "esbuild": true
+  },
   "dependencies": {
     "leaflet": "^1.9.4",
     "lucide-react": "^0.511.0",
