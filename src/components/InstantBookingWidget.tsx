@@ -9,7 +9,6 @@ import {
   Phone,
   Plane,
   ShieldCheck,
-  User,
 } from 'lucide-react';
 import { LocationAutocompleteInput } from './LocationAutocompleteInput';
 import { HomeServiceMode, loadBookingDraft, saveBookingDraft } from '../utils/bookingTransfer';
@@ -51,7 +50,6 @@ export const InstantBookingWidget: React.FC = () => {
   );
   const [localLabel, setLocalLabel] = useState(initialDraft?.localLabel || '8 Hrs / 80 Km');
 
-  const [name, setName] = useState(initialDraft?.name || '');
   const [phone, setPhone] = useState(initialDraft?.phone || '');
   const [pickup, setPickup] = useState(initialDraft?.pickup || 'Amaravati / Vijayawada');
   const [drop, setDrop] = useState(initialDraft?.destination || 'Hyderabad');
@@ -107,7 +105,7 @@ export const InstantBookingWidget: React.FC = () => {
       selectedAirport,
       localHours,
       localLabel,
-      name: name.trim(),
+      name: '',
       phone: phone.trim(),
       pickup: pickup.trim() || 'Amaravati / Vijayawada',
       destination: drop.trim() || (mode === 'Local Rental' ? localLabel : 'Hyderabad'),
@@ -249,34 +247,19 @@ export const InstantBookingWidget: React.FC = () => {
       )}
 
       <form onSubmit={handleSubmit} className="space-y-3">
-        {/* Name & Phone */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <div>
-            <label className="text-[11px] font-bold text-slate-700 flex items-center gap-1 mb-1">
-              <User className="w-3.5 h-3.5 text-amber-600" /> Full Name
-            </label>
-            <input
-              type="text"
-              required
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="e.g. Ramesh Kumar"
-              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-amber-500 focus:bg-white outline-none text-xs sm:text-sm font-medium"
-            />
-          </div>
-          <div>
-            <label className="text-[11px] font-bold text-slate-700 flex items-center gap-1 mb-1">
-              <Phone className="w-3.5 h-3.5 text-amber-600" /> Phone Number
-            </label>
-            <input
-              type="tel"
-              required
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              placeholder="e.g. 93935xxxxx"
-              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-amber-500 focus:bg-white outline-none text-xs sm:text-sm font-medium"
-            />
-          </div>
+        {/* Phone Number */}
+        <div>
+          <label className="text-[11px] font-bold text-slate-700 flex items-center gap-1 mb-1">
+            <Phone className="w-3.5 h-3.5 text-amber-600" /> Phone Number (Driver will call you directly)
+          </label>
+          <input
+            type="tel"
+            required
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            placeholder="e.g. 93935xxxxx"
+            className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-amber-500 focus:bg-white outline-none text-xs sm:text-sm font-medium"
+          />
         </div>
 
         {/* Pickup & Drop */}

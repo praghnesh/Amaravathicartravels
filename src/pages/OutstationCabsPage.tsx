@@ -10,7 +10,6 @@ import {
   MessageCircle,
   Phone,
   ShieldCheck,
-  User,
 } from 'lucide-react';
 import { FLEET, Vehicle } from '../data/fleet';
 import { BRAND, buildWhatsAppUrl, formatINR } from '../config/brand';
@@ -34,7 +33,6 @@ export const OutstationCabsPage: React.FC = () => {
   const [tripMode, setTripMode] = useState<'oneway' | 'roundtrip'>(
     initial?.tripType || (initial?.mode === 'Round Trip' ? 'roundtrip' : 'oneway')
   );
-  const [name, setName] = useState(initial?.name || '');
   const [phone, setPhone] = useState(initial?.phone || '');
   const [pickup, setPickup] = useState(initial?.pickup || 'Amaravati / Vijayawada');
   const [destination, setDestination] = useState(initial?.destination || 'Hyderabad');
@@ -49,7 +47,6 @@ export const OutstationCabsPage: React.FC = () => {
   useEffect(() => {
     if (navState?.fromHomeBooking) {
       if (navState.tripType) setTripMode(navState.tripType);
-      if (navState.name !== undefined) setName(navState.name);
       if (navState.phone !== undefined) setPhone(navState.phone);
       if (navState.pickup) setPickup(navState.pickup);
       if (navState.destination) setDestination(navState.destination);
@@ -115,7 +112,7 @@ export const OutstationCabsPage: React.FC = () => {
     const msg = [
       `*OUTSTATION CAB RESERVATION — ${BRAND.name}*`,
       `• Trip Type: ${tripMode === 'oneway' ? 'One-Way Drop' : `Round Trip (${tripDays} Day${tripDays > 1 ? 's' : ''})`}`,
-      `• Passenger: ${name || 'Guest'} (${phone || 'Not provided'})`,
+      `• Contact Phone: ${phone || 'Not provided'}`,
       `• Pickup: ${pickup}`,
       `• Destination: ${destination}`,
       `• Est. Distance: ~${routeKm} Kms (One-Way) / ${est.billableKm} Kms Billable`,
@@ -215,32 +212,18 @@ export const OutstationCabsPage: React.FC = () => {
                 </div>
               </div>
 
-              {/* Passenger Info */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1 mb-1.5">
-                    <User className="w-3.5 h-3.5 text-amber-600" /> Passenger Name
-                  </label>
-                  <input
-                    type="text"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    placeholder="Your full name"
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-3.5 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-amber-500"
-                  />
-                </div>
-                <div>
-                  <label className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1 mb-1.5">
-                    <Phone className="w-3.5 h-3.5 text-amber-600" /> Phone Number
-                  </label>
-                  <input
-                    type="tel"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    placeholder="10-digit mobile number"
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-3.5 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-amber-500"
-                  />
-                </div>
+              {/* Contact Info */}
+              <div>
+                <label className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1 mb-1.5">
+                  <Phone className="w-3.5 h-3.5 text-amber-600" /> Phone Number (Driver will contact you)
+                </label>
+                <input
+                  type="tel"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  placeholder="10-digit mobile number (e.g. 93935xxxxx)"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-3.5 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                />
               </div>
 
               {/* Pickup & Destination */}

@@ -23,7 +23,6 @@ export const HourlyRentalsPage: React.FC = () => {
   const initial = navState || saved;
 
   const [duration, setDuration] = useState<DurationKey>(initial?.localHours || '8h');
-  const [name, setName] = useState(initial?.name || '');
   const [phone, setPhone] = useState(initial?.phone || '');
   const [pickup, setPickup] = useState(initial?.pickup || 'Amaravati / Vijayawada');
   const [date, setDate] = useState(initial?.date || new Date().toISOString().split('T')[0]);
@@ -32,7 +31,6 @@ export const HourlyRentalsPage: React.FC = () => {
   useEffect(() => {
     if (navState?.fromHomeBooking) {
       if (navState.localHours) setDuration(navState.localHours);
-      if (navState.name !== undefined) setName(navState.name);
       if (navState.phone !== undefined) setPhone(navState.phone);
       if (navState.pickup) setPickup(navState.pickup);
       if (navState.date) setDate(navState.date);
@@ -77,24 +75,14 @@ export const HourlyRentalsPage: React.FC = () => {
               Hourly Rental Details Loaded from Home ({activePkg.title})
             </span>
           )}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             <div>
-              <label className="block text-[11px] font-bold text-slate-600 mb-1">Passenger Name</label>
-              <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="Your name"
-                className="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm"
-              />
-            </div>
-            <div>
-              <label className="block text-[11px] font-bold text-slate-600 mb-1">Phone Number</label>
+              <label className="block text-[11px] font-bold text-slate-600 mb-1">Phone Number (Driver will contact you)</label>
               <input
                 type="tel"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                placeholder="10-digit mobile"
+                placeholder="10-digit mobile (e.g. 93935xxxxx)"
                 className="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm"
               />
             </div>
@@ -180,7 +168,7 @@ export const HourlyRentalsPage: React.FC = () => {
                 `*Local Hourly Rental Booking — ${BRAND.name}*`,
                 `• Package: ${activePkg.title}`,
                 `• Vehicle: ${car.name} (${car.seating}) — ${formatINR(price)}`,
-                `• Passenger: ${name || 'Guest'} (${phone || 'Not provided'})`,
+                `• Contact Phone: ${phone || 'Not provided'}`,
                 `• Pickup: ${pickup}`,
                 `• Date & Time: ${date} at ${time}`,
               ].join('\n');

@@ -17,7 +17,6 @@ export const FleetPage: React.FC = () => {
   const [tripMode, setTripMode] = useState<'roundtrip' | 'oneway'>(
     navState?.tripType || saved?.tripType || 'roundtrip'
   );
-  const [name, setName] = useState(navState?.name || saved?.name || '');
   const [phone, setPhone] = useState(navState?.phone || saved?.phone || '');
   const [pickup, setPickup] = useState(navState?.pickup || saved?.pickup || 'Amaravati / Vijayawada');
   const [destination, setDestination] = useState(navState?.destination || saved?.destination || 'Hyderabad');
@@ -49,7 +48,7 @@ export const FleetPage: React.FC = () => {
       `• Selected Vehicle: ${activeCar.name} (${activeCar.seating})`,
       `• Trip Mode: ${isOneWay ? 'One-Way Drop' : 'Round Trip'}`,
       `• Rate: ₹${activeRate}/km (+ ₹${activeCar.driverBatta} Driver Batta)`,
-      `• Passenger: ${name || 'Guest'} (${phone || 'Not provided'})`,
+      `• Contact Phone: ${phone || 'Not provided'}`,
       `• Pickup: ${pickup}`,
       `• Destination: ${destination}`,
     ].join('\n');
@@ -68,7 +67,7 @@ export const FleetPage: React.FC = () => {
             Our Sanitized Tourist Permit Fleet
           </h1>
           <p className="text-slate-300 mt-3 max-w-2xl text-sm sm:text-base">
-            Choose from fuel-efficient 4-seater sedans, 6/7-seater Ertiga &amp; Innova Crystas, 17-seater Force Tempo Travellers &amp; VIP Urbanias, and 26-seater AC Mini Buses.
+            Choose from fuel-efficient 4-seater sedans, 6/7-seater Ertiga &amp; Innova Crystas, 17-seater Force Tempo Travellers &amp; VIP Urbanias, 26-seater AC Mini Buses, and 40-seater AC Luxury Coaches.
           </p>
         </div>
       </section>
@@ -127,26 +126,15 @@ export const FleetPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               <div>
-                <label className="block text-xs font-bold text-slate-600 mb-1">Your Name</label>
-                <input
-                  type="text"
-                  required
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  placeholder="Enter full name"
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm"
-                />
-              </div>
-              <div>
-                <label className="block text-xs font-bold text-slate-600 mb-1">Phone Number</label>
+                <label className="block text-xs font-bold text-slate-600 mb-1">Phone Number (Driver will contact you)</label>
                 <input
                   type="tel"
                   required
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  placeholder="10-digit mobile"
+                  placeholder="10-digit mobile (e.g. 93935xxxxx)"
                   className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm"
                 />
               </div>

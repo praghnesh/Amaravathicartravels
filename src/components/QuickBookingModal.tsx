@@ -8,7 +8,6 @@ import { LocationAutocompleteInput } from './LocationAutocompleteInput';
 export const QuickBookingModal: React.FC = () => {
   const { isOpen, prefill, closeBooking } = useBookingModal();
 
-  const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [mode, setMode] = useState<'outstation' | 'airport' | 'hourly'>('outstation');
   const [tripType, setTripType] = useState<'oneway' | 'roundtrip'>('roundtrip');
@@ -58,7 +57,7 @@ export const QuickBookingModal: React.FC = () => {
     const lines = [
       `*New Cab Booking Request — ${BRAND.name}*`,
       `• Service: ${mode === 'airport' ? 'Airport Transfer' : mode === 'hourly' ? 'Local Hourly Rental' : `Outstation (${tripType === 'oneway' ? 'One-Way Drop' : 'Round Trip'})`}`,
-      `• Passenger: ${name || 'Guest'} (${phone || 'Not provided'})`,
+      `• Contact Phone: ${phone || 'Not provided'}`,
       `• Pickup: ${pickup}`,
       `• Drop / Package: ${destination}`,
       `• Vehicle: ${selectedVehicle.name} (${selectedVehicle.seating})`,
@@ -176,29 +175,16 @@ export const QuickBookingModal: React.FC = () => {
               </div>
             )}
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">Your Name</label>
-                <input
-                  type="text"
-                  required
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  placeholder="Enter full name"
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-amber-500"
-                />
-              </div>
-              <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">Phone Number</label>
-                <input
-                  type="tel"
-                  required
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  placeholder="10-digit mobile number"
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-amber-500"
-                />
-              </div>
+            <div>
+              <label className="block text-xs font-bold text-slate-700 mb-1">Phone Number (Driver will contact you)</label>
+              <input
+                type="tel"
+                required
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                placeholder="10-digit mobile number (e.g. 93935xxxxx)"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-amber-500"
+              />
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">

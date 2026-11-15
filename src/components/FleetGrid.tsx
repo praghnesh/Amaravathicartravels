@@ -14,7 +14,7 @@ const CATEGORIES: { id: 'all' | VehicleCategory; label: string }[] = [
   { id: 'sedan', label: 'Sedans (4+1)' },
   { id: 'mpv', label: 'SUV / Ertiga (6+1)' },
   { id: 'luxury', label: 'Innova & Crysta (7+1)' },
-  { id: 'traveller', label: 'Tempo, Urbania & Mini Bus' },
+  { id: 'traveller', label: 'Tempo, Urbania & Luxury Buses' },
 ];
 
 export const FleetGrid: React.FC<FleetGridProps> = ({ limit, showFilters = true }) => {

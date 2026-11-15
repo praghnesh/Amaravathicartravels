@@ -30,7 +30,6 @@ export const AirportCabsPage: React.FC = () => {
   const [airport, setAirport] = useState(
     initial?.selectedAirport || 'Vijayawada Airport (Gannavaram - VGA)'
   );
-  const [name, setName] = useState(initial?.name || '');
   const [phone, setPhone] = useState(initial?.phone || '');
   const [flightNo, setFlightNo] = useState('');
   const [date, setDate] = useState(initial?.date || new Date().toISOString().split('T')[0]);
@@ -41,7 +40,6 @@ export const AirportCabsPage: React.FC = () => {
     if (navState?.fromHomeBooking) {
       if (navState.transferType) setDirection(navState.transferType);
       if (navState.selectedAirport) setAirport(navState.selectedAirport);
-      if (navState.name !== undefined) setName(navState.name);
       if (navState.phone !== undefined) setPhone(navState.phone);
       if (navState.date) setDate(navState.date);
       if (navState.time) setTime(navState.time);
@@ -64,7 +62,7 @@ export const AirportCabsPage: React.FC = () => {
     [
       `*Airport Transfer Booking — ${BRAND.name}*`,
       `• Type: ${direction === 'drop' ? 'Drop to Airport' : 'Pickup from Airport'}`,
-      `• Passenger: ${name || 'Guest'} (${phone || 'Not provided'})`,
+      `• Contact Phone: ${phone || 'Not provided'}`,
       `• Airport: ${airport}`,
       `• City Point: ${cityPoint}`,
       flightNo ? `• Flight Number: ${flightNo}` : '',
@@ -148,25 +146,13 @@ export const AirportCabsPage: React.FC = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-xs font-bold text-slate-700 mb-1.5">
-                  Passenger Name
-                </label>
-                <input
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  placeholder="Enter your name"
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm"
-                />
-              </div>
-              <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1.5">
-                  Phone Number
+                  Phone Number (Driver will contact you)
                 </label>
                 <input
                   type="tel"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  placeholder="10-digit mobile number"
+                  placeholder="10-digit mobile number (e.g. 93935xxxxx)"
                   className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm"
                 />
               </div>
@@ -333,10 +319,10 @@ export const AirportCabsPage: React.FC = () => {
             </div>
 
             <div className="space-y-2.5 text-sm border-y border-white/10 py-4">
-              {name && (
+              {phone && (
                 <div className="flex justify-between gap-2">
-                  <span className="text-slate-400">Passenger:</span>
-                  <span className="font-bold text-right">{name}</span>
+                  <span className="text-slate-400">Contact:</span>
+                  <span className="font-bold text-right text-amber-400">{phone}</span>
                 </div>
               )}
               <div className="flex justify-between gap-2">
