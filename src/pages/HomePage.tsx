@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { BRAND, formatINR } from '../config/brand';
 import { InstantBookingWidget } from '../components/InstantBookingWidget';
+import { PromoCarousel } from '../components/PromoCarousel';
 import { SocialMediaSection } from '../components/SocialMediaSection';
 import { TOUR_PACKAGES } from '../data/packages';
 import { FLEET, VehicleCategory } from '../data/fleet';
@@ -423,7 +424,10 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 4. SOCIAL MEDIA SECTION */}
+      {/* 4. EXCLUSIVE BANNERS CAROUSEL */}
+      <PromoCarousel />
+
+      {/* 5. SOCIAL MEDIA SECTION */}
       <SocialMediaSection />
     </div>
   );
