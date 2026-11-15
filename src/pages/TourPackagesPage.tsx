@@ -14,6 +14,7 @@ import { TOUR_PACKAGES } from '../data/packages';
 import { FLEET, VehicleCategory } from '../data/fleet';
 import { BRAND, buildWhatsAppUrl, formatINR } from '../config/brand';
 import { HomeBookingDraft, loadBookingDraft } from '../utils/bookingTransfer';
+import { RoutePackagesSection } from '../components/RoutePackagesSection';
 
 const VEHICLE_FILTERS: { id: 'all' | VehicleCategory; label: string }[] = [
   { id: 'all', label: 'All Vehicles' },
@@ -319,6 +320,9 @@ export const TourPackagesPage: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* FIXED CORRIDOR ROUTE PACKAGES */}
+      <RoutePackagesSection />
     </div>
   );
 };

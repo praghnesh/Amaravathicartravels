@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { BRAND, formatINR } from '../config/brand';
 import { InstantBookingWidget } from '../components/InstantBookingWidget';
+import { RoutePackagesSection } from '../components/RoutePackagesSection';
 import { PromoCarousel } from '../components/PromoCarousel';
 import { SocialMediaSection } from '../components/SocialMediaSection';
 import { TOUR_PACKAGES } from '../data/packages';
@@ -274,6 +275,9 @@ export const HomePage: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* 2.5 ROUTE PACKAGES (HYDERABAD <-> VIJAYAWADA & GUNTUR) */}
+      <RoutePackagesSection />
 
       {/* 3. OUR FLEET SECTION */}
       <section className="py-12 sm:py-16 bg-white" id="fleet">
